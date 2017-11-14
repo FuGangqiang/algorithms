@@ -9,5 +9,12 @@ namespace Tests.Books.Algorithms.Chap2 {
             Selection<int>.Sort(xs);
             Assert.True(Sorting<int>.IsSorted(xs));
         }
+
+        [Fact]
+        public void InsertionTest() {
+            int[] xs = { 3, 2, 1, 6, 5, 9, 4 };
+            Insertion<int>.Sort(xs);
+            Assert.True(Sorting<int>.IsSorted(xs));
+        }
     }
 }
