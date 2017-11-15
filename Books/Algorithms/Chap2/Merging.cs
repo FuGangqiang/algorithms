@@ -19,6 +19,15 @@ namespace Books.Algorithms.Chap2 {
             Merge(xs, lo, mid, hi);
         }
 
+        public void IterativeSort(T[] xs) {
+            temp = new T[xs.Length];
+            for (int sz = 1; sz < xs.Length; sz = sz + sz) {
+                for (int lo = 0; lo < xs.Length - sz; lo += sz + sz) {
+                    Merge(xs, lo, lo + sz - 1, Math.Min(lo + sz + sz - 1, xs.Length - 1));
+                }
+            }
+        }
+
         private void Merge(T[] xs, int lo, int mid, int hi) {
             int i = lo;
             int j = mid + 1;

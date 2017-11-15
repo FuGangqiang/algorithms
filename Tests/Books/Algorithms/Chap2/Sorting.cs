@@ -31,5 +31,13 @@ namespace Tests.Books.Algorithms.Chap2 {
             ms.RecurisiveSort(xs);
             Assert.True(Sorting<int>.IsSorted(xs));
         }
+
+        [Fact]
+        public void IterativeMergingTest() {
+            int[] xs = { 3, 2, 1, 6, 5, 9, 4 };
+            var ms = new Merging<int>();
+            ms.IterativeSort(xs);
+            Assert.True(Sorting<int>.IsSorted(xs));
+        }
     }
 }
