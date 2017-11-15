@@ -39,5 +39,12 @@ namespace Tests.Books.Algorithms.Chap2 {
             ms.IterativeSort(xs);
             Assert.True(Sorting<int>.IsSorted(xs));
         }
+
+        [Fact]
+        public void SimpleQuickTest() {
+            int[] xs = { 3, 2, 1, 6, 5, 9, 4 };
+            Quick<int>.SimpleSort(xs);
+            Assert.True(Sorting<int>.IsSorted(xs));
+        }
     }
 }
