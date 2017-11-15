@@ -53,5 +53,12 @@ namespace Tests.Books.Algorithms.Chap2 {
             Quick<int>.Improved1Sort(xs);
             Assert.True(Sorting<int>.IsSorted(xs));
         }
+
+        [Fact]
+        public void Improved2QuickTest() {
+            int[] xs = { 3, 2, 1, 6, 5, 9, 4 };
+            Quick<int>.Improved2Sort(xs);
+            Assert.True(Sorting<int>.IsSorted(xs));
+        }
     }
 }
