@@ -2,6 +2,8 @@ using System;
 
 namespace Books.Algorithms.Chap2 {
     public class Quick<T> where T : IComparable<T> {
+        private static readonly int M = 5; // 5 ~ 15
+
         public static void SimpleSort(T[] xs) {
             SimpleSort(xs, 0, xs.Length - 1);
         }
@@ -13,6 +15,20 @@ namespace Books.Algorithms.Chap2 {
             int j = Partition(xs, lo, hi);
             SimpleSort(xs, lo, j - 1);
             SimpleSort(xs, j + 1, hi);
+        }
+
+        public static void Improved1Sort(T[] xs) {
+            Improved1Sort(xs, 0, xs.Length - 1);
+        }
+
+        private static void Improved1Sort(T[] xs, int lo, int hi) {
+            if (hi <= lo + M) {
+                Insertion<T>.Sort(xs, lo, hi);
+                return;
+            }
+            int j = Partition(xs, lo, hi);
+            Improved1Sort(xs, lo, j - 1);
+            Improved1Sort(xs, j + 1, hi);
         }
 
         private static int Partition(T[] xs, int lo, int hi) {
