@@ -67,5 +67,19 @@ namespace Tests.Books.Algorithms.Chap2 {
             Bubble<int>.Sort(xs);
             Assert.True(Sorting<int>.IsSorted(xs));
         }
+
+        [Fact]
+        public void MaxPriorityQueueTest() {
+            int[] xs = { 3, 2, 1, 6, 5, 9, 4 };
+            var queue = new MaxPriorityQueue<int>(xs.Length);
+            for (int i = 0; i < xs.Length; i++) {
+                queue.Insert(xs[i]);
+            }
+            Quick<int>.SimpleSort(xs);
+            for (int i = xs.Length - 1; i > 0; i--) {
+                int v = queue.DelMax();
+                Assert.Equal(v, xs[i]);
+            }
+        }
     }
 }
