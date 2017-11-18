@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 using Books.Algorithms.Chap2;
 
@@ -93,6 +94,22 @@ namespace Tests.Books.Algorithms.Chap2 {
             for (int i = 0; i < xs.Length; i++) {
                 int v = queue.DelMin();
                 Assert.Equal(v, xs[i]);
+            }
+        }
+
+        [Fact]
+        public void IndexMinPrivorityQueueTest() {
+            string[] strings1 = { "it", "was", "the", "best", "of", "times", "it", "was", "the", "worst" };
+            string[] strings2 = new string[strings1.Length];
+            Array.Copy(strings1, strings2, strings1.Length);
+            var queue = new IndexMinPriorityQueue<string>(strings1.Length);
+            for (int i = 0; i < strings1.Length; i++) {
+                queue.Insert(i, strings1[i]);
+            }
+            Quick<string>.SimpleSort(strings2);
+            for (int i = 0; i < strings1.Length; i++) {
+                int index = queue.DelMin();
+                Assert.Equal(strings1[index], strings2[i]);
             }
         }
     }
