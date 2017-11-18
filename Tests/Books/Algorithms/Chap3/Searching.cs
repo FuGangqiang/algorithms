@@ -19,5 +19,22 @@ namespace Tests.Books.Algorithms.Chap3 {
                 }
             }
         }
+
+        [Fact]
+        public void BinarySearchTest() {
+            int[] xs = { 3, 4, 5, 2, 6 };
+            var st = new BinarySearchSymbolTable<int, int>(xs.Length);
+            for (int i = 0; i < xs.Length; i++) {
+                st.Put(i, xs[i]);
+            }
+            int v;
+            for (int i = 0; i < xs.Length; i++) {
+                if (st.TryGet(i, out v)) {
+                    Assert.Equal(xs[i], v);
+                } else {
+                    Assert.False(true);
+                }
+            }
+        }
     }
 }
