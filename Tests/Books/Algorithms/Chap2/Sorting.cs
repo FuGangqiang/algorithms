@@ -112,5 +112,12 @@ namespace Tests.Books.Algorithms.Chap2 {
                 Assert.Equal(strings1[index], strings2[i]);
             }
         }
+
+        [Fact]
+        public void HeapTest() {
+            int[] xs = { 3, 2, 1, 6, 5, 9, 4 };
+            Heap<int>.Sort(xs);
+            Assert.True(Sorting<int>.IsSorted(xs));
+        }
     }
 }
