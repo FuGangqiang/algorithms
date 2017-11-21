@@ -87,5 +87,24 @@ namespace Tests.Books.Algorithms.Chap3 {
                 }
             }
         }
+
+        [Fact]
+        public void LinearProbingHashSymbolTableTest() {
+            int[] xs = { 3, 4, 5, 2, 6 };
+            var st = new LinearProbingHashSymbolTable<int, int>(xs.Length * 2);
+            for (int i = 1; i <= xs.Length; i++) {
+		// can not use index 0! default(int) == 0
+                st.Put(i, xs[i-1]);
+            }
+            int v;
+            for (int i = 1; i <= xs.Length; i++) {
+                if (st.TryGet(i, out v)) {
+                    Assert.Equal(xs[i-1], v);
+                } else {
+                    Assert.False(true);
+                }
+            }
+        }
+
     }
 }
