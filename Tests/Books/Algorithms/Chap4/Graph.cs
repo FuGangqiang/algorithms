@@ -29,5 +29,19 @@ namespace Tests.Books.Algorithms.Chap4 {
             var dfs = new DepthFirstSearch(g, 0);
             Assert.Equal(6, dfs.Count);
         }
+
+        [Fact]
+        public void DfsPathToTest() {
+            var g = GraphSample();
+            var dfs = new DepthFirstPaths(g, 0);
+            Assert.True(dfs.HasPathTo(5));
+            var path = dfs.PathTo(5);
+            int[] result = { 5, 3, 2, 0 };
+            int i = 0;
+            foreach (int v in path) {
+                Assert.Equal(result[i], v);
+                i++;
+            }
+        }
     }
 }
