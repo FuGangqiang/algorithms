@@ -22,5 +22,12 @@ namespace Tests.Books.Algorithms.Chap4 {
             Assert.Equal(6, g.Vcount);
             Assert.Equal(8, g.Ecount);
         }
+
+        [Fact]
+        public void DfsCountTest() {
+            var g = GraphSample();
+            var dfs = new DepthFirstSearch(g, 0);
+            Assert.Equal(6, dfs.Count);
+        }
     }
 }
