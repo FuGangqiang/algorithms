@@ -71,5 +71,12 @@ namespace Tests.Books.Algorithms.Chap4 {
             Assert.True(dfs.Connected(0, v));
 
         }
+
+        [Fact]
+        public void CycleTest() {
+            var g = GraphSample();
+            var dfs = new Cycle(g);
+            Assert.True(dfs.HasCycle());
+        }
     }
 }
