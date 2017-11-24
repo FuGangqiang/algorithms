@@ -78,5 +78,12 @@ namespace Tests.Books.Algorithms.Chap4 {
             var dfs = new Cycle(g);
             Assert.True(dfs.HasCycle());
         }
+
+        [Fact]
+        public void TwoColorTest() {
+            var g = GraphSample();
+            var dfs = new TwoColor(g);
+            Assert.False(dfs.IsBipartite());
+        }
     }
 }
