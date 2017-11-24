@@ -57,5 +57,19 @@ namespace Tests.Books.Algorithms.Chap4 {
                 i++;
             }
         }
+
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        [InlineData(5)]
+        public void ConnectedComponentTest(int v) {
+            var g = GraphSample();
+            var dfs = new ConnectedComponent(g);
+            Assert.Equal(1, dfs.Count);
+            Assert.True(dfs.Connected(0, v));
+
+        }
     }
 }
