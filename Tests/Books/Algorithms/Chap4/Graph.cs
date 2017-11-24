@@ -43,5 +43,19 @@ namespace Tests.Books.Algorithms.Chap4 {
                 i++;
             }
         }
+
+        [Fact]
+        public void BreadthFirstPathsTest() {
+            var g = GraphSample();
+            var bfs = new BreadthFirstPaths(g, 0);
+            Assert.True(bfs.HasPathTo(5));
+            var path = bfs.PathTo(5);
+            int[] result = { 5, 0 };
+            int i = 0;
+            foreach (int v in path) {
+                Assert.Equal(result[i], v);
+                i++;
+            }
+        }
     }
 }
