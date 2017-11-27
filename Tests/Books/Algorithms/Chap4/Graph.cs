@@ -119,5 +119,14 @@ namespace Tests.Books.Algorithms.Chap4 {
             Assert.Equal(13, g.Vcount);
             Assert.Equal(22, g.Ecount);
         }
+
+        [Fact]
+        void DigraphDfsTest() {
+            var g = DigraphSample();
+            var dfs = new DirectedDfs(g, 0);
+            Assert.True(dfs.Marked(1));
+            Assert.True(dfs.Marked(2));
+            Assert.False(dfs.Marked(6));
+        }
     }
 }
