@@ -128,5 +128,12 @@ namespace Tests.Books.Algorithms.Chap4 {
             Assert.True(dfs.Marked(2));
             Assert.False(dfs.Marked(6));
         }
+
+        [Fact]
+        public void DirectedCycleTest() {
+            var g = DigraphSample();
+            var dfs = new DirectedCycle(g);
+            Assert.False(dfs.HasCycle());
+        }
     }
 }
