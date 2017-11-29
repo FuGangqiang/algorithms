@@ -168,5 +168,15 @@ namespace Tests.Books.Algorithms.Chap4 {
                 i++;
             }
         }
+
+        [Fact]
+        public void KosarajuStrongConnectedComponentsTest() {
+            var g = DigraphSample();
+            var kcc = new KosarajuStrongConnectedComponents(g);
+            Assert.True(kcc.StrongConnected(0, 4));
+            Assert.False(kcc.StrongConnected(1, 4));
+            Assert.True(kcc.StrongConnected(10, 11));
+            Assert.False(kcc.StrongConnected(6, 8));
+        }
     }
 }
