@@ -178,5 +178,13 @@ namespace Tests.Books.Algorithms.Chap4 {
             Assert.True(kcc.StrongConnected(10, 11));
             Assert.False(kcc.StrongConnected(6, 8));
         }
+
+        [Fact]
+        public void TransitiveClosureTest() {
+            var g = DigraphSample();
+            var tc = new TransitiveClosure(g);
+            Assert.True(tc.Reachable(0, 2));
+            Assert.False(tc.Reachable(9, 6));
+        }
     }
 }
