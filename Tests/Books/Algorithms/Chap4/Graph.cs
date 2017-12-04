@@ -186,5 +186,33 @@ namespace Tests.Books.Algorithms.Chap4 {
             Assert.True(tc.Reachable(0, 2));
             Assert.False(tc.Reachable(9, 6));
         }
+
+        public EdgeWeightedGraph EdgeWeightGraphSample() {
+            var ewg = new EdgeWeightedGraph(8);
+            ewg.AddEdge(new Edge(4, 5, 0.35));
+            ewg.AddEdge(new Edge(4, 7, 0.37));
+            ewg.AddEdge(new Edge(5, 7, 0.28));
+            ewg.AddEdge(new Edge(0, 7, 0.16));
+            ewg.AddEdge(new Edge(1, 5, 0.32));
+            ewg.AddEdge(new Edge(0, 4, 0.38));
+            ewg.AddEdge(new Edge(2, 3, 0.17));
+            ewg.AddEdge(new Edge(1, 7, 0.19));
+            ewg.AddEdge(new Edge(0, 2, 0.26));
+            ewg.AddEdge(new Edge(1, 2, 0.36));
+            ewg.AddEdge(new Edge(1, 3, 0.29));
+            ewg.AddEdge(new Edge(2, 7, 0.34));
+            ewg.AddEdge(new Edge(6, 2, 0.40));
+            ewg.AddEdge(new Edge(3, 6, 0.52));
+            ewg.AddEdge(new Edge(6, 0, 0.58));
+            ewg.AddEdge(new Edge(6, 4, 0.93));
+            return ewg;
+        }
+
+        [Fact]
+        public void EdgeWeightGraphTest() {
+            var ewg = EdgeWeightGraphSample();
+            Assert.Equal(8, ewg.Vcount);
+            Assert.Equal(16, ewg.Ecount);
+        }
     }
 }
