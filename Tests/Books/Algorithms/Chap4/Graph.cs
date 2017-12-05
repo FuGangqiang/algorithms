@@ -214,5 +214,18 @@ namespace Tests.Books.Algorithms.Chap4 {
             Assert.Equal(8, ewg.Vcount);
             Assert.Equal(16, ewg.Ecount);
         }
+
+        [Fact]
+        public void LazyPrimMinimumSpanTreeTest() {
+            var ewg = EdgeWeightGraphSample();
+            var mst = new LazyPrimMinimumSpanTree(ewg);
+            var result = new[] { new Edge(0, 7, 0.16), new Edge(1, 7, 0.19), new Edge(0, 2, 0.26), new Edge(2, 3, 0.17), new Edge(5, 7, 0.28), new Edge(4, 5, 0.35), new Edge(6, 2, 0.40) };
+            int i = 0;
+            foreach (var e in mst.Edges()) {
+                Assert.Equal(result[i], e);
+                i++;
+            }
+            Assert.Equal(1.81, mst.Weight(), 2);
+        }
     }
 }
