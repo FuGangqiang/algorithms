@@ -280,5 +280,23 @@ namespace Tests.Books.Algorithms.Chap4 {
             Assert.Equal(8, ewdg.Vcount);
             Assert.Equal(15, ewdg.Ecount);
         }
+
+        [Fact]
+        public void DijkstraShortestPathTest() {
+            var dg = EdgeWeightedDigraphSample();
+            var sp = new DijkstraShortestPath(dg, 0);
+            var es = new DirectedEdge[] {
+                new DirectedEdge(0, 2, 0.26),
+                new DirectedEdge(2, 7, 0.34),
+                new DirectedEdge(7, 3, 0.39),
+                new DirectedEdge(3, 6, 0.52),
+            };
+            int i = 0;
+            foreach (var e in sp.PathTo(6)) {
+                Assert.Equal(e, es[i]);
+                i++;
+            }
+            Assert.Equal(1.51, sp.DistTo(6), 2);
+        }
     }
 }
