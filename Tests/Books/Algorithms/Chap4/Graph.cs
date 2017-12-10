@@ -133,7 +133,7 @@ namespace Tests.Books.Algorithms.Chap4 {
         public void DirectedCycleTest() {
             var g = DigraphSample();
             var dfs = new DirectedCycle(g);
-            Assert.False(dfs.HasCycle());
+            Assert.True(dfs.HasCycle());
         }
 
         public Digraph DagSample() {
@@ -297,6 +297,41 @@ namespace Tests.Books.Algorithms.Chap4 {
                 i++;
             }
             Assert.Equal(1.51, sp.DistTo(6), 2);
+        }
+
+        public EdgeWeightedDigraph EdgeWeightedDagSample() {
+            var dg = new EdgeWeightedDigraph(8);
+            dg.AddEdge(new DirectedEdge(5, 4, 0.35));
+            dg.AddEdge(new DirectedEdge(4, 7, 0.37));
+            dg.AddEdge(new DirectedEdge(5, 7, 0.28));
+            dg.AddEdge(new DirectedEdge(5, 1, 0.32));
+            dg.AddEdge(new DirectedEdge(4, 0, 0.38));
+            dg.AddEdge(new DirectedEdge(0, 2, 0.26));
+            dg.AddEdge(new DirectedEdge(3, 7, 0.39));
+            dg.AddEdge(new DirectedEdge(1, 3, 0.29));
+            dg.AddEdge(new DirectedEdge(7, 2, 0.34));
+            dg.AddEdge(new DirectedEdge(6, 2, 0.40));
+            dg.AddEdge(new DirectedEdge(3, 6, 0.52));
+            dg.AddEdge(new DirectedEdge(6, 0, 0.58));
+            dg.AddEdge(new DirectedEdge(6, 4, 0.93));
+            return dg;
+        }
+
+        [Fact]
+        public void AcyclicShortestPathTest() {
+            var dg = EdgeWeightedDagSample();
+            var sp = new AcyclicShortestPath(dg, 5);
+            var es = new DirectedEdge[] {
+                new DirectedEdge(5, 1, 0.32),
+                new DirectedEdge(1, 3, 0.29),
+                new DirectedEdge(3, 6, 0.52),
+            };
+            int i = 0;
+            foreach (var e in sp.PathTo(6)) {
+                Assert.Equal(e, es[i]);
+                i++;
+            }
+            Assert.Equal(1.13, sp.DistTo(6), 2);
         }
     }
 }
