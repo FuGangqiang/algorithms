@@ -333,5 +333,25 @@ namespace Tests.Books.Algorithms.Chap4 {
             }
             Assert.Equal(1.13, sp.DistTo(6), 2);
         }
+
+        [Fact]
+        public void AcyclicLongestPath() {
+            var dg = EdgeWeightedDagSample();
+            var lp = new AcyclicLongestPath(dg, 5);
+            var es = new DirectedEdge[] {
+                new DirectedEdge(5, 1, 0.32),
+                new DirectedEdge(1, 3, 0.29),
+                new DirectedEdge(3, 6, 0.52),
+                new DirectedEdge(6, 4, 0.93),
+                new DirectedEdge(4, 7, 0.37),
+                new DirectedEdge(7, 2, 0.34),
+            };
+            int i = 0;
+            foreach (var e in lp.PathTo(2)) {
+                Assert.Equal(e, es[i]);
+                i++;
+            }
+            Assert.Equal(2.77, lp.DistTo(2), 2);
+        }
     }
 }
