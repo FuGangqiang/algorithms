@@ -42,5 +42,44 @@ namespace Tests.Books.Algorithms.Chap5 {
                 Assert.Equal(a[i], b[i]);
             }
         }
+
+        [Fact]
+        public void MsdSortTest() {
+            var a = new string[] {
+                "she",
+                "sells",
+                "seashells",
+                "by",
+                "the",
+                "seashore",
+                "the",
+                "shells",
+                "she",
+                "sells",
+                "are",
+                "surely",
+                "seashells",
+            };
+
+            var b = new string[] {
+                "are",
+                "by",
+                "seashells",
+                "seashells",
+                "seashore",
+                "sells",
+                "sells",
+                "she",
+                "she",
+                "shells",
+                "surely",
+                "the",
+                "the",
+            };
+            Msd.Sort(a);
+            for (int i = 0; i < a.Length; i++) {
+                Assert.Equal(a[i], b[i]);
+            }
+        }
     }
 }
