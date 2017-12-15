@@ -120,5 +120,38 @@ namespace Tests.Books.Algorithms.Chap5 {
                 Assert.Equal(a[i], b[i]);
             }
         }
+
+        [Fact]
+        public void TrieSymbolTable() {
+            var st = new TrieSymbolTable<int>();
+            st.Put("by", 4);
+            st.Put("sea", 2);
+            st.Put("sells", 1);
+            st.Put("she", 6);
+            st.Put("shells", 3);
+            st.Put("the", 5);
+
+            Assert.Equal(6, st.Size());
+
+            var keys = st.KeysWithPrefix("sh");
+            int i = 0;
+            var res = new string[] { "she", "shells" };
+            foreach (var key in keys) {
+                Assert.Equal(key, res[i]);
+                i++;
+            }
+
+            Assert.Equal("she", st.LongestPrefixOf("she"));
+            Assert.Equal("she", st.LongestPrefixOf("shed"));
+
+            st.TryGet("shells", out var val1);
+            Assert.Equal(3, val1);
+            st.TryGet("shed", out var val2);
+            Assert.Equal(0, val2);
+
+            st.Delete("shells");
+            st.TryGet("shells", out var val3);
+            Assert.Equal(0, val3);
+        }
     }
 }
