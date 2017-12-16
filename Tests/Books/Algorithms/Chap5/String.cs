@@ -169,5 +169,12 @@ namespace Tests.Books.Algorithms.Chap5 {
             st.TryGet("bye", out var val2);
             Assert.Equal(0, val2);
         }
+
+        [Fact]
+        public void BruteForceSearchTest() {
+            string txt = "ABACADABRAC";
+            string pat = "ABRA";
+            Assert.Equal(6, BruteForceSearch.Search(pat, txt));
+        }
     }
 }
