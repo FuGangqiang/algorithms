@@ -153,5 +153,21 @@ namespace Tests.Books.Algorithms.Chap5 {
             st.TryGet("shells", out var val3);
             Assert.Equal(0, val3);
         }
+
+        [Fact]
+        public void TernarySearchTrieSymbolTableTest() {
+            var st = new TrieSymbolTable<int>();
+            st.Put("by", 4);
+            st.Put("sea", 2);
+            st.Put("sells", 1);
+            st.Put("she", 6);
+            st.Put("shells", 3);
+            st.Put("the", 5);
+
+            st.TryGet("by", out var val1);
+            Assert.Equal(4, val1);
+            st.TryGet("bye", out var val2);
+            Assert.Equal(0, val2);
+        }
     }
 }

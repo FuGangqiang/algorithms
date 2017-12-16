@@ -51,6 +51,15 @@ namespace Books.Algorithms.Chap5 {
             return TryGet(x.next[c], key, d + 1, out node);
         }
 
+        public T this[string key] {
+            get {
+                TryGet(key, out var val);
+                return val;
+            }
+
+            set { Put(key, value); }
+        }
+
         public void Put(string key, T val) {
             root = Put(root, key, val, 0);
         }
