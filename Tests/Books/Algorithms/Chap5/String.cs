@@ -176,5 +176,13 @@ namespace Tests.Books.Algorithms.Chap5 {
             string pat = "ABRA";
             Assert.Equal(6, BruteForceSearch.Search(pat, txt));
         }
+
+        [Fact]
+        public void KMPSearchTest() {
+            string txt = "ABACADABRAC";
+            string pat = "ABRA";
+            var kmp = new KmpSearch(pat);
+            Assert.Equal(6, kmp.Search(txt));
+        }
     }
 }
