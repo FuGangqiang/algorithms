@@ -184,5 +184,13 @@ namespace Tests.Books.Algorithms.Chap5 {
             var kmp = new KmpSearch(pat);
             Assert.Equal(6, kmp.Search(txt));
         }
+
+        [Fact]
+        public void KmpDfaSearchTest() {
+            string txt = "ABACADABRAC";
+            string pat = "ABRA";
+            var kmp = new KmpDfaSearch(pat);
+            Assert.Equal(6, kmp.Search(txt));
+        }
     }
 }
