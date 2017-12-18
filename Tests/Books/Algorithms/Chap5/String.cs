@@ -192,5 +192,13 @@ namespace Tests.Books.Algorithms.Chap5 {
             var kmp = new KmpDfaSearch(pat);
             Assert.Equal(6, kmp.Search(txt));
         }
+
+        [Fact]
+        public void BoyerMooreSearchTest() {
+            string txt = "ABACADABRAC";
+            string pat = "ABRA";
+            var bm = new BoyerMooreSearch(pat);
+            Assert.Equal(6, bm.Search(txt));
+        }
     }
 }
