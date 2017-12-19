@@ -200,5 +200,13 @@ namespace Tests.Books.Algorithms.Chap5 {
             var bm = new BoyerMooreSearch(pat);
             Assert.Equal(6, bm.Search(txt));
         }
+
+        [Fact]
+        public void RabinKarpSearchTest() {
+            string txt = "ABACADABRAC";
+            string pat = "ABRA";
+            var rk = new RabinKarpSearch(pat);
+            Assert.Equal(6, rk.Search(txt));
+        }
     }
 }
