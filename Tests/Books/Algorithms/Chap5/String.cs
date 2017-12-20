@@ -208,5 +208,13 @@ namespace Tests.Books.Algorithms.Chap5 {
             var rk = new RabinKarpSearch(pat);
             Assert.Equal(6, rk.Search(txt));
         }
+
+        [Fact]
+        public void NFA() {
+            string txt = "AABD";
+            string re = "((A*B|AC)D)";
+            var nfa = new NFA(re);
+            Assert.True(nfa.Recognizes(txt));
+        }
     }
 }
